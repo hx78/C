@@ -21,6 +21,12 @@ sizeof:sizeof.o
 sizeof.o:sizeof.c logUtils.h
 	cc -c sizeof.c
 	
+#当然，为了避免和文件重名的这种情况，我们可以使用一个特殊的标记“.PHONY”来显
+#示地指明一个目标是“伪目标”，向 make 说明，不管是否有这个文件，这个目标就是“伪
+#目标”。
+#.PHONY : clean
+#只要有这个声明，不管是否有“clean”文件，要运行“clean”这个目标，只有“make clean”
+.PHONY : clean
 clean:
 	-rm sizeof *.o *.out
 	
